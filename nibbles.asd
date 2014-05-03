@@ -59,13 +59,12 @@
   (asdf:oos 'asdf:test-op 'nibbles-tests))
 
 (asdf:defsystem :nibbles-tests
-  :depends-on (:nibbles)
+  :depends-on (:nibbles :rt)
   :version "0.1"
   :author "Nathan Froyd <froydnj@gmail.com>"
   :maintainer "Nathan Froyd <froydnj@gmail.com>"
   :in-order-to ((asdf:test-op (asdf:load-op :nibbles-tests)))
-  :components ((:file "rt")
-               (:file "tests" :depends-on ("rt"))))
+  :components ((:file "tests")))
 
 (defmethod asdf:perform ((op asdf:test-op)
                          (c (eql (asdf:find-system :nibbles-tests))))
